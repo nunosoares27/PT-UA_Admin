@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+use App\User;
+
 class HomeController extends Controller
 {
     /**
@@ -42,4 +44,16 @@ class HomeController extends Controller
         }
 
     }
+
+
+    public function confirmaEmailUtilizador ($email){
+       
+        $utilizador = User::whereEmail($email)->first();;  
+        $utilizador->confirmedEmail = 1;
+         $utilizador->save();
+         return redirect('/');
+    }
+
+
+
 }
