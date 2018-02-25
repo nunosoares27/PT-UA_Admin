@@ -18,6 +18,130 @@
 
 
     <style>
+
+.prt_btn{height:50px;line-height:50px;color:#ffffff;font-size:15px;font-weight:400;border-radius:0px;padding:0 20px;min-width:140px;outline:none;cursor:pointer;display:inline-block;text-align:center;text-transform:capitalize;background-color:#f6483b;border:1px solid #f6483b;-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-ms-transition:all 0.3s;-o-transition:all 0.3s;transition:all 0.3s;}
+.prt_btn:hover, .prt_btn:focus{color:#f6483b;background-color:#111111;border:1px solid #f6483b;-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-ms-transition:all 0.3s;-o-transition:all 0.3s;transition:all 0.3s;}
+
+.prt_btn2 {
+    height: 50px;
+    line-height: 50px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 0px;
+    padding: 0 20px;
+    min-width: 140px;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-transform: capitalize;
+    background-color: #333;
+    border: 1px solid #f6483b;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.prt_btn2:hover, .prt_btn2:focus{color:#f6483b;background-color:#111111;border:1px solid #f6483b;-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-ms-transition:all 0.3s;-o-transition:all 0.3s;transition:all 0.3s;}
+
+
+.contact7 .contact7-form {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    overflow: hidden;
+    border: 5px solid #548ce9;
+    border-radius: 10%;
+    padding: 30px 30px 30px 30px;
+}
+
+.contact7 .contact7-form form {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.contact7-form{
+    margin-top: 1.5% !important;
+}
+.contact7 .contact7-form .form-control {
+    background: transparent;
+    border: 1px solid #c7c7c7;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.contact7 .contact7-form .btn-default {
+    background-color: #548ce9;
+    color: #fff;
+    border-radius: 0;
+}
+
+.contact7 .contact7-form .btn-default:hover {
+    background-color: #000;
+    color: #fff;
+    border-radius: 0;
+}
+
+.form-control {
+    opacity: 0.2;
+    -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+  -o-transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in;
+}
+
+.form-control:hover, .form-control:focus {
+    opacity: 1;
+}
+
+    .navbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    -webkit-box-shadow: 0px 3px #00000045;
+    -moz-box-shadow: 0px 3px #00000045;
+    box-shadow: 0px 3px #00000045;
+}
+
+        .introbanner{
+           display: flex;
+           justify-content: center;
+           flex-direction: column;
+           text-align: center;
+           height: 600px;
+           font-size: 46px;
+           font-weight: 800;
+           color: white;
+           text-shadow: 3px 3px #000;
+        }
+
+       .content-background{
+           margin-top: -23px;
+                width: 100vw;
+                height:630px;
+                background-image: url(http://ricta2016.web.ua.pt/wp-content/uploads/2014/12/6.jpg);
+  
+                /* Background image is centered vertically and horizontally at all times */
+                background-position: center center;
+                
+                /* Background image doesn't tile */
+                background-repeat: no-repeat;
+                
+                /* Background image is fixed in the viewport so that it doesn't move when 
+                    the content's height is greater than the image's height */
+                background-attachment: fixed;
+                
+                /* This is what makes the background image rescale based
+                    on the container's size */
+                background-size: cover;
+                
+                /* Set a background color that will be displayed
+                    while the background image is loading */
+                background-color: #464646;
+            }
 aside ul{
     margin:0px;
     padding:0px;
@@ -137,8 +261,8 @@ ul#editar {
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Entrar</a></li>
+                            <li><a href="{{ route('register') }}">Registar</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -150,7 +274,7 @@ ul#editar {
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Sair
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -170,5 +294,6 @@ ul#editar {
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    
 </body>
 </html>
