@@ -229,6 +229,14 @@ ul#editar {
     color: white;
 }
 
+
+.panel-heading {
+    color: #3131ad;
+
+}
+
+
+
 </style>
 </head>
 <body>
@@ -288,6 +296,7 @@ ul#editar {
                 </div>
             </div>
         </nav>
+
 
         @yield('content')
     </div>

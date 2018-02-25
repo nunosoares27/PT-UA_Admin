@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+ <div class="content-background">
+<div class="container" style="display: flex;
+           justify-content: center;
+           flex-direction: column;
+           text-align: center;height: 600px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -65,5 +70,7 @@
             </div>
         </div>
     </div>
+</div>
+
 </div>
 @endsection
