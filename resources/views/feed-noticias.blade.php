@@ -37,29 +37,22 @@
 
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dúvidas do utilizador: {{\Auth::user()->name}}</div>
+                <div class="panel-heading">Feed de Noticias</div>
 
                 <div class="panel-body">
                     
                       <div class="col-lg-12">
-
-                            @foreach ($duvidas as $duvida)
-                                <h3>{{$duvida->pergunta}}</h3>
-                                <div>{!!$duvida->descricao!!}</div>
-                             
-                             <div style="display:flex;justify-content: space-between;">
-                                <a href="/duvida-edit/{{$duvida->id}}"><button class="prt_btn2">Editar</button></a>
-
-                                <form method="POST" action="/duvida-edit/{{$duvida->id}}" enctype="multipart/form-data" >
-                     <input name="_method" type="hidden" value="DELETE">
-                      {{ csrf_field() }}
-        <button type="submit"  class="prt_btn">Apagar</button>
-        </form>
-
-            </div>
-
-            <hr class="style-eight">
-
+                            
+                            @foreach ($noticias as $noticia)
+                                  <h3>{{$noticia->titulo}} criado por {{$noticia->name}} em {{$noticia->created_at}}</h3>
+                            @if (file_exists(public_path('/storage/noticias/'. $noticia->id_noticia .'/imagem1.jpg')))
+                                <img src="{{asset('/storage/noticias/'.$noticia->id_noticia)}}/imagem1.jpg" alt="..." style="width: 100%;height: auto;">
+                              @endif
+                                <div>{!!$noticia->descricao!!}</div>
+                                 @if (file_exists(public_path('/storage/noticias/'. $noticia->id_noticia .'/imagem2.jpg')))
+                                 <img src="{{asset('/storage/noticias/'.$noticia->id_noticia)}}/imagem2.jpg" alt="..." style="width: 100%;height: auto;">
+                                 @endif
+                                 <hr class="style-eight">
                             @endforeach
                     
                      </div>

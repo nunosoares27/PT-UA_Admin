@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Noticia;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+
 
 class NoticiaController extends Controller
 {
@@ -21,7 +25,10 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        //
+        $noticias = DB::table('noticias')->join('users', 'users.id', '=', 'noticias.user_id')->get();
+        
+        return view('feed-noticias',compact('noticias'));
+
     }
 
     /**
@@ -42,7 +49,34 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $noticia = new Noticia();
+         $titulo = $request->titulo;
+         $descricao = $request->descricao;
+
+        
+
+        $user_id = Auth::user()->id;
+
+        $data = [
+            'descricao' => $descricao,
+            'titulo' => $titulo,
+            'user_id' => $user_id,
+]; 
+
+        $id = DB::table('noticias')->insertGetId(
+             $data
+         );
+
+       if ($request->hasFile('file1')){
+             $path = $request->file('file1')->storeAs('/public/noticias/', $id.'/imagem1.jpg');
+        } 
+
+        if ($request->hasFile('file2')){
+             $path = $request->file('file2')->storeAs('/public/noticias/', $id.'/imagem2.jpg');
+        } 
+
+
+        return redirect('/feed-noticias');
     }
 
     /**

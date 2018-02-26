@@ -47,3 +47,5 @@ Route::post('/welcome-email', 'HomeController@enviaEmailWelcomePage');
 Route::get('/criarnoticia','NoticiaController@create');
 
 Route::post('/criarnoticia','NoticiaController@store');
+
+Route::get('/feed-noticias','NoticiaController@index');
