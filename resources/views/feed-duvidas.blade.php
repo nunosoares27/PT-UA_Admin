@@ -46,7 +46,7 @@
                             @foreach ($duvidas as $duvida)
                                 <h3>{{$duvida->pergunta}} criado por {{$duvida->name}} em {{$duvida->created_at}}</h3>
                                 <div>{!!$duvida->descricao!!}</div>
-
+                                 <hr class="style-eight">
                             @endforeach
                     
                      </div>

@@ -143,8 +143,19 @@ class DuvidaController extends Controller
      * @param  \App\Duvida  $duvida
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Duvida $duvida)
+    public function destroy($id)
     {
-        //
+         $idCheck = Auth::user()->id;
+           
+         $duvida = Duvida::find($id);  
+
+         if($idCheck == $duvida->user_id){
+              $duvida->forceDelete();
+            return redirect('/duvidas-user');
+         }
+         else {
+                 return view('not-permit-edit');
+             }
+        
     }
 }

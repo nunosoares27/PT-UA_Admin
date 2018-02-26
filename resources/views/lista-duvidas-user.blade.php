@@ -46,7 +46,20 @@
                             @foreach ($duvidas as $duvida)
                                 <h3>{{$duvida->pergunta}}</h3>
                                 <div>{!!$duvida->descricao!!}</div>
-                                <a href="/duvida-edit/{{$duvida->id}}"><button class="prt_btn">Editar</button></a>
+                             
+                             <div style="display:flex;justify-content: space-between;">
+                                <a href="/duvida-edit/{{$duvida->id}}"><button class="prt_btn2">Editar</button></a>
+
+                                <form method="POST" action="/duvida-edit/{{$duvida->id}}" enctype="multipart/form-data" >
+                     <input name="_method" type="hidden" value="DELETE">
+                      {{ csrf_field() }}
+        <button type="submit"  class="prt_btn">Apagar</button>
+        </form>
+
+            </div>
+
+            <hr class="style-eight">
+
                             @endforeach
                     
                      </div>

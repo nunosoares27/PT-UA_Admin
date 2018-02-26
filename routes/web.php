@@ -34,3 +34,6 @@ Route::get('/duvida-edit/{id}','DuvidaController@edit');
 Route::get('/duvidas-user','DuvidaController@showDuvidasUser');
 
 Route::put('/duvida-edit/{id}', 'DuvidaController@update');
+
+Route::delete('/duvida-edit/{id}', 'DuvidaController@destroy');
+
