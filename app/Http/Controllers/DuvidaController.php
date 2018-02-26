@@ -99,9 +99,18 @@ class DuvidaController extends Controller
      */
     public function edit($id)
     {
-       
+            $idCheck = Auth::user()->id;
+           
              $duvida = Duvida::find($id);
-             return view('duvida-edit',compact('duvida'));
+              
+             if($idCheck == $duvida->user_id){
+                return view('duvida-edit',compact('duvida'));
+             }
+             else {
+                 return view('not-permit-edit');
+             }
+           //  return dd($duvida);
+       //      return view('duvida-edit',compact('duvida'));
     
     
     }
