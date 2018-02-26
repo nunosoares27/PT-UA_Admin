@@ -26,7 +26,7 @@
             </li>
                 <ul class="sub-menu collapse" id="editar">
                     <li class="active"><a href="#"><span class="remove_text">Noticia</span></a></li>
-                    <li><a href="#"><span class="remove_text">Dúvida</span></a></li>
+                    <li><a href="/duvidas-user"><span class="remove_text">Dúvida</span></a></li>
                 </ul>
         
               <li><a href="#">Sair</a></li>

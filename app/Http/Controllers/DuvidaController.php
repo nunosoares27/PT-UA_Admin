@@ -81,15 +81,29 @@ class DuvidaController extends Controller
         //
     }
 
+    public function showDuvidasUser(){
+         $id = Auth::user()->id;
+         $duvidas = DB::table('duvidas')
+         ->where('user_id', '=', $id)
+         ->get();
+
+        //  return dd($duvidas);
+        return view('lista-duvidas-user',compact('duvidas'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Duvida  $duvida
      * @return \Illuminate\Http\Response
      */
-    public function edit(Duvida $duvida)
+    public function edit($id)
     {
-        //
+       
+             $duvida = Duvida::find($id);
+             return view('duvida-edit',compact('duvida'));
+    
+    
     }
 
     /**
@@ -99,9 +113,14 @@ class DuvidaController extends Controller
      * @param  \App\Duvida  $duvida
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Duvida $duvida)
+    public function update(Request $request, $id)
     {
-        //
+       
+         $duvida = Duvida::find($id);  
+         $data = $request->all();
+         $duvida->update($data);
+         return redirect('/duvidas-user');
+        
     }
 
     /**

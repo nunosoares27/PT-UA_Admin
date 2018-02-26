@@ -37,16 +37,16 @@
 
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Feed de Dúvidas</div>
+                <div class="panel-heading">Dúvidas do utilizador: {{\Auth::user()->name}}</div>
 
                 <div class="panel-body">
                     
                       <div class="col-lg-12">
 
                             @foreach ($duvidas as $duvida)
-                                <h3>{{$duvida->pergunta}} criado por {{$duvida->name}} em {{$duvida->created_at}}</h3>
+                                <h3>{{$duvida->pergunta}}</h3>
                                 <div>{!!$duvida->descricao!!}</div>
-
+                                <a href="/duvida-edit/{{$duvida->id}}"><button class="prt_btn">Editar</button></a>
                             @endforeach
                     
                      </div>
@@ -56,6 +56,4 @@
     </div>
 </div>
 @endsection
-
-
 

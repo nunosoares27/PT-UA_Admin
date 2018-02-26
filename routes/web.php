@@ -28,3 +28,9 @@ Route::get('/criarduvida','DuvidaController@create');
 Route::post('/criarduvida','DuvidaController@store');
 
 Route::get('/feed-duvidas','DuvidaController@index');
+
+Route::get('/duvida-edit/{id}','DuvidaController@edit');
+
+Route::get('/duvidas-user','DuvidaController@showDuvidasUser');
+
+Route::put('/duvida-edit/{id}', 'DuvidaController@update');

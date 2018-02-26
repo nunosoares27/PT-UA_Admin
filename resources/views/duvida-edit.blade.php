@@ -37,20 +37,20 @@
 
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Publicar Dúvida</div>
+                <div class="panel-heading">Editar Dúvida</div>
 
                 <div class="panel-body">
                     
                       <div class="col-lg-12">
 
-                               <form method="POST" action="/criarduvida" enctype="multipart/form-data" >
-                     
+                               <form method="POST" action="/duvida-edit/{{$duvida->id}}" enctype="multipart/form-data" >
+                                <input name="_method" type="hidden" value="PUT">
                       {{ csrf_field() }}
 
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
                         <label for="pergunta">Pergunta</label>
-                         <input id="pergunta" type="text" class="form-control" name="pergunta">
+                         <input id="pergunta" type="text" value="{{$duvida->pergunta}}" class="form-control" name="pergunta">
                         </div>
         </div>
 
@@ -58,7 +58,7 @@
                    <div class="form-group">
   <label for="">Descrição:</label>
   <textarea class="form-control" rows="5" id="projectdescription" name="descricao" 
-  ></textarea>
+  >{{$duvida->descricao}}</textarea>
 </div>
 
 <div class="col-lg-12 text-center">
@@ -89,7 +89,7 @@
 @section('tinymce')
 
     @parent
-    <script src='./js/tinymce/js/tinymce/tinymce.min.js'></script>
+    <script src='../js/tinymce/js/tinymce/tinymce.min.js'></script>
 
     <script>
 tinymce.init({
