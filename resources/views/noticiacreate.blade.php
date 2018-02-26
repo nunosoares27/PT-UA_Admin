@@ -16,7 +16,7 @@
                   <a href="#">Publicar<span class="fa fa-angle-down"></span></a>
             </li>
                 <ul class="sub-menu collapse" id="publicar">
-                    <li class="active"><a href="/criarnoticia"><span class="remove_text">Noticia</span></a></li>
+                    <li class="active"><a href="#"><span class="remove_text">Noticia</span></a></li>
                     <li><a href="/criarduvida"><span class="remove_text">Dúvida</span></a></li>
                 </ul>
                  
@@ -37,7 +37,7 @@
 
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Publicar Dúvida</div>
+                <div class="panel-heading">Publicar Notícia</div>
 
                 <div class="panel-body">
                     
@@ -49,8 +49,8 @@
 
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
-                        <label for="pergunta">Pergunta</label>
-                         <input id="pergunta" type="text" class="form-control" name="pergunta">
+                        <label for="pergunta">Titulo</label>
+                         <input id="pergunta" type="text" class="form-control" name="titulo">
                         </div>
         </div>
 
@@ -60,6 +60,23 @@
   <textarea class="form-control" rows="5" id="projectdescription" name="descricao" 
   ></textarea>
 </div>
+
+
+  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                          <h3>Selecionar imagens da Noticia:</h3>
+                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="padding-bottom: 20px;">
+                            <label>Imagem de Capa (*obrigatória)</label>
+                            <input type="file" id="file1" name="file1">
+                        
+                        </div>
+                        
+                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="padding-bottom: 20px;">
+                            <label>Imagem não obrigatória que aparecerá no final da noticia</label>
+                          <input type="file" id="file2" name="file2">
+                        </div>
+
+                        </div>
+
 
 <div class="col-lg-12 text-center">
 <button href="" class="btn btn-lg btn-success" style="margin-top: 5px;" type="submit">Enviar</button>

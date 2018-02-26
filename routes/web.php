@@ -40,3 +40,10 @@ Route::delete('/duvida-edit/{id}', 'DuvidaController@destroy');
 // email da welcome page antes dos utilizadores se registarem
 
 Route::post('/welcome-email', 'HomeController@enviaEmailWelcomePage');
+
+
+// noticias
+
+Route::get('/criarnoticia','NoticiaController@create');
+
+Route::post('/criarnoticia','NoticiaController@store');

@@ -191,7 +191,7 @@
                                 <textarea class="form-control" name="mensagem" rows="10" placeholder="Mensagem" required></textarea>
                             </div>
                             
-                            <button type="submit" class="prt_btn">send message</button>
+                            <button type="submit" class="prt_btn">Enviar</button>
                         </form>
                         <!-- /Form -->
                     </div>

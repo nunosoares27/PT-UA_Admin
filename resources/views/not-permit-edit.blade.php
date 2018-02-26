@@ -16,7 +16,7 @@
                   <a href="#">Publicar<span class="fa fa-angle-down"></span></a>
             </li>
                 <ul class="sub-menu collapse" id="publicar">
-                    <li class="active"><a href="#"><span class="remove_text">Noticia</span></a></li>
+                    <li class="active"><a href="/criarnoticia"><span class="remove_text">Noticia</span></a></li>
                     <li><a href="/criarduvida"><span class="remove_text">Dúvida</span></a></li>
                 </ul>
                  
