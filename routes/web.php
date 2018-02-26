@@ -20,3 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/emailconfirm/{email}', 'HomeController@confirmaEmailUtilizador');
+
+Route::put('/confirmAdmin/{id}', 'HomeController@confirmaAdmin');
+
+Route::get('/criarduvida','DuvidaController@create');
+
+Route::post('/criarduvida','DuvidaController@store');
+
+Route::get('/feed-duvidas','DuvidaController@index');

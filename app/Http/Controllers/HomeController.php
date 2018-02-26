@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 use App\User;
 
@@ -27,8 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $utilizadorAvalidar = DB::table('users')->where('confirmedAdmin', '=', 0)->get();;
+
         if (Auth::user()->confirmedEmail === 1 && Auth::user()->confirmedAdmin === 1){
-            return view('home');
+             return view('home',compact('utilizadorAvalidar'));
+            
         }
         elseif (Auth::user()->confirmedEmail === 0 && Auth::user()->confirmedAdmin === 0) {
             Session::flash('message', "&#10005; Necessita confirmar e-mail </br>&#10005; Em processo de validação por parte da Administração");
@@ -54,6 +59,14 @@ class HomeController extends Controller
          return redirect('/');
     }
 
+    public function confirmaAdmin ($id){
+
+        $utilizador = User::whereId($id)->first();;  
+        $utilizador->confirmedAdmin = 1;
+        $utilizador->save();
+         return redirect('/home');
+
+    }
 
 
 }

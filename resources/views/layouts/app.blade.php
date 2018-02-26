@@ -18,7 +18,9 @@
 
 
     <style>
-
+button#mceu_0-open {
+    display: none;
+}
 .prt_btn{height:50px;line-height:50px;color:#ffffff;font-size:15px;font-weight:400;border-radius:0px;padding:0 20px;min-width:140px;outline:none;cursor:pointer;display:inline-block;text-align:center;text-transform:capitalize;background-color:#f6483b;border:1px solid #f6483b;-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-ms-transition:all 0.3s;-o-transition:all 0.3s;transition:all 0.3s;}
 .prt_btn:hover, .prt_btn:focus{color:#f6483b;background-color:#111111;border:1px solid #f6483b;-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-ms-transition:all 0.3s;-o-transition:all 0.3s;transition:all 0.3s;}
 
@@ -303,6 +305,10 @@ ul#editar {
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+     @section('tinymce')
+
+        @show
     
 </body>
 </html>
