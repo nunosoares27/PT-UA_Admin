@@ -37,3 +37,6 @@ Route::put('/duvida-edit/{id}', 'DuvidaController@update');
 
 Route::delete('/duvida-edit/{id}', 'DuvidaController@destroy');
 
+// email da welcome page antes dos utilizadores se registarem
+
+Route::post('/welcome-email', 'HomeController@enviaEmailWelcomePage');

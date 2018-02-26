@@ -179,16 +179,16 @@
 
                     <div class="contact7-form">
                         <!-- Form -->
-                        <form role="form" action="#">
-                           
+                        <form role="form"  method="POST" action="/welcome-email">
+                             {{ csrf_field() }}
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name" required>
+                                <input type="text" name="nome" class="form-control" placeholder="Nome" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="email" required>
+                                <input type="email" name="email" class="form-control" placeholder="E-mail" required>
                             </div>
                              <div class="form-group">
-                                <textarea class="form-control" rows="10" placeholder="your message" required></textarea>
+                                <textarea class="form-control" name="mensagem" rows="10" placeholder="Mensagem" required></textarea>
                             </div>
                             
                             <button type="submit" class="prt_btn">send message</button>

@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 use App\User;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailWelcomePage;
+
 class HomeController extends Controller
 {
     /**
@@ -66,6 +69,15 @@ class HomeController extends Controller
         $utilizador->save();
          return redirect('/home');
 
+    }
+
+    public function enviaEmailWelcomePage(Request $request) {
+        $nome = $request->nome;
+        $email = $request->email;
+        $mensagem = $request->mensagem;
+          Mail::to('terradosolnascente24@gmail.com')
+          ->send(new EmailWelcomePage($nome, $email, $mensagem));
+          return redirect('/home');
     }
 
 
