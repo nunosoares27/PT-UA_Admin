@@ -109,9 +109,7 @@ class DuvidaController extends Controller
              else {
                  return view('not-permit-edit');
              }
-           //  return dd($duvida);
-       //      return view('duvida-edit',compact('duvida'));
-    
+           
     
     }
 
@@ -124,12 +122,19 @@ class DuvidaController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
-         $duvida = Duvida::find($id);  
-         $data = $request->all();
-         $duvida->update($data);
-         return redirect('/duvidas-user');
-        
+       $idCheck = Auth::user()->id;
+           
+       $duvida = Duvida::find($id);  
+
+         if($idCheck == $duvida->user_id){
+              $data = $request->all();
+              $duvida->update($data);
+            return redirect('/duvidas-user');
+         }
+         else {
+                 return view('not-permit-edit');
+             }
+
     }
 
     /**
