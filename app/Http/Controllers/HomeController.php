@@ -21,7 +21,14 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['getUsers']]);
+    }
+
+    public function getUsers()
+    {
+        $users = DB::table('users')->select('id', 'name', 'email','typeUser')->get();
+
+        return $users;
     }
 
     /**

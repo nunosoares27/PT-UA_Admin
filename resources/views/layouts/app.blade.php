@@ -143,7 +143,7 @@ button#mceu_0-open {
            margin-top: -23px;
                 width: 100vw;
                 height:630px;
-                background-image: url(http://ricta2016.web.ua.pt/wp-content/uploads/2014/12/6.jpg);
+                background-image: url('./img/nuno_app_7.JPG');
   
                 /* Background image is centered vertically and horizontally at all times */
                 background-position: center center;
