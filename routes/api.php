@@ -19,3 +19,6 @@ use Illuminate\Http\Request;
 
 // http://ptua.desenvolvimento/api/users
 Route::get('/users', 'HomeController@getUsers');
+
+Route::post('/register', 'HomeController@registerUser');
+

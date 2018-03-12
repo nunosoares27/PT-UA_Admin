@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 
 use Illuminate\Support\Facades\Mail;
+use App\Mail\UserConfirmEmail;
 use App\Mail\EmailWelcomePage;
 
 class HomeController extends Controller
@@ -21,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['getUsers']]);
+        $this->middleware('auth', ['except' => ['getUsers', 'registerUser']]);
     }
 
     public function getUsers()
@@ -29,6 +30,21 @@ class HomeController extends Controller
         $users = DB::table('users')->select('id', 'name', 'email','typeUser')->get();
 
         return $users;
+    }
+
+    public function registerUser(Request $request){
+
+        //  Mail::to($request['email'])->send(new UserConfirmEmail($request['name'],$request['email'],$request['typeUser']));
+        return User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+            'typeUser' => $request['typeUser'],
+            'confirmedEmail' => false,
+            'confirmedAdmin' => false
+        ]);
+
+
     }
 
     /**
