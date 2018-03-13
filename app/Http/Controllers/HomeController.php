@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 use App\User;
 
+
+
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserConfirmEmail;
 use App\Mail\EmailWelcomePage;
@@ -22,8 +24,21 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['getUsers', 'registerUser']]);
+        $this->middleware('auth', ['except' => ['getUsers', 'registerUser','authenticateNative']]);
     }
+
+    public function authenticateNative(Request $request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+        {
+            return Auth::user();
+        }
+        else {
+            return ['name' => 'Dados não coincidem'];
+        }
+    }
+
+
 
     public function getUsers()
     {

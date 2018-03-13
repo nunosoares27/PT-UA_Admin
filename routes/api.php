@@ -26,3 +26,9 @@ Route::post('/register', 'HomeController@registerUser');
 
 Route::get('/noticias', 'NoticiaController@ApiGetNoticias');
 
+
+// para o login da app react native
+
+// http://ptua.desenvolvimento/api/loginApp
+
+Route::post ('/loginApp', 'HomeController@authenticateNative');
