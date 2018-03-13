@@ -23,7 +23,7 @@ class NoticiaController extends Controller
 
          $noticias = DB::table('noticias')
          ->join('users', 'users.id', '=', 'noticias.user_id')
-         ->select('id', 'id_noticia','name', 'email','typeUser','titulo','descricao')
+         ->select('id', 'id_noticia','name', 'email','typeUser','titulo','descricao','noticiaHasImagem1', 'noticiaHasImagem2')
          ->get();
 
          return $noticias;
@@ -65,6 +65,18 @@ class NoticiaController extends Controller
          $noticia = new Noticia();
          $titulo = $request->titulo;
          $descricao = $request->descricao;
+         $noticiaHasImagem1 = false;
+         $noticiaHasImagem2 = false;
+
+if ($request->hasFile('file1')){
+            
+             $noticiaHasImagem1 = true;
+        } 
+
+        if ($request->hasFile('file2')){
+             
+             $noticiaHasImagem2 = true;
+        } 
 
         
 
@@ -74,20 +86,24 @@ class NoticiaController extends Controller
             'descricao' => $descricao,
             'titulo' => $titulo,
             'user_id' => $user_id,
+            'noticiaHasImagem1'=> $noticiaHasImagem1,
+             'noticiaHasImagem2'=> $noticiaHasImagem2
 ]; 
 
         $id = DB::table('noticias')->insertGetId(
              $data
          );
 
-       if ($request->hasFile('file1')){
+       
+if ($request->hasFile('file1')){
              $path = $request->file('file1')->storeAs('/public/noticias/', $id.'/imagem1.jpg');
+             
         } 
 
         if ($request->hasFile('file2')){
              $path = $request->file('file2')->storeAs('/public/noticias/', $id.'/imagem2.jpg');
+            
         } 
-
 
         return redirect('/feed-noticias');
     }

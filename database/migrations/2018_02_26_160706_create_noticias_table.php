@@ -18,6 +18,8 @@ class CreateNoticiasTable extends Migration
             $table->string('titulo');
             $table->string('user_id');
             $table->longText('descricao');
+            $table->boolean('noticiaHasImagem1');
+            $table->boolean('noticiaHasImagem2');
             $table->timestamps();
         });
     }
