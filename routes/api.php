@@ -22,3 +22,7 @@ Route::get('/users', 'HomeController@getUsers');
 
 Route::post('/register', 'HomeController@registerUser');
 
+// http://ptua.desenvolvimento/api/noticias
+
+Route::get('/noticias', 'NoticiaController@ApiGetNoticias');
+

@@ -219,9 +219,10 @@ aside ul li a span{
 aside.hit_sidebar.open_sidbar {
     background-color: #22313F;
     width: 200px;
-    height: 100vh;
+    height: 200vh;
     margin-left: -70px;
-    margin-top: -23px;
+    margin-top: -88px;
+    padding-top: 80px;
     position: fixed;
 }
 

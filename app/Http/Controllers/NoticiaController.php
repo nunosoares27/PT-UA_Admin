@@ -14,9 +14,22 @@ class NoticiaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except' => ['ApiGetNoticias',]]);
     }
 
+
+   public function ApiGetNoticias()
+   {
+
+         $noticias = DB::table('noticias')
+         ->join('users', 'users.id', '=', 'noticias.user_id')
+         ->select('id', 'id_noticia','name', 'email','typeUser','titulo','descricao')
+         ->get();
+
+         return $noticias;
+
+
+   }
 
     /**
      * Display a listing of the resource.
