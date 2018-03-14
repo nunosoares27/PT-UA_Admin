@@ -31,6 +31,9 @@ class HomeController extends Controller
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
+           //  Auth::user();
+        //    $user = DB::table('users')->select('id', 'name', 'email','typeUser', 'password')->where('id', '=', Auth::user()->id)->get();
+
             return Auth::user();
         }
         else {
