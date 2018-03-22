@@ -11,4 +11,9 @@ class Noticia extends Model
     ];
 
 
+    // public function likes()
+    // {
+    //     return $this->hasManyThrough('App\LikeNoticia', 'App\User');
+    // }
+
 }

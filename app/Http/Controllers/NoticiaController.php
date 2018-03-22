@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Noticia;
+use App\LikeNoticia;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +15,7 @@ class NoticiaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['ApiGetNoticias',]]);
+        $this->middleware('auth',['except' => ['ApiGetNoticias','ApiGetLikesNoticia','GetLikes']]);
     }
 
 
@@ -23,12 +24,91 @@ class NoticiaController extends Controller
 
          $noticias = DB::table('noticias')
          ->join('users', 'users.id', '=', 'noticias.user_id')
-         ->select('id', 'id_noticia','name', 'email','typeUser','titulo','descricao','noticiaHasImagem1', 'noticiaHasImagem2')
+         ->select('id_noticia','name', 'email','typeUser','titulo','descricao','noticiaHasImagem1', 'noticiaHasImagem2')
          ->get();
 
-         return $noticias;
+        // $noticias = DB::table('noticias')
+        // ->leftJoin('users', 'noticias.user_id_creator', '=', 'users.id')
+        // ->join('like_noticias', 'like_noticias.id_noticia_like', '=', 'noticias.id_noticia')
+        // ->select('users.*', 'noticias.*','like_noticias.*')
+        // ->get();
+
+        //  $noticias = DB::table('noticias')
+        // ->leftJoin('like_noticias', 'like_noticias.id_noticia_like', '=', 'noticias.id_noticia')
+        // ->select('like_noticias.*', 'noticias.*')
+        // ->get();
+
+        // $users = DB::table('users')->get();
+        // $noticias = DB::table('noticias')->get();
+
+         
+         
+         
+    // $query2 = "";
+      
+      
+    //    foreach ($users as $user) {
+      
+    //         $query2 .= DB::table('like_noticias')->join('users','user_id_like', '=', 'users.id')
+    //        ->where('users.id', '=', $user->id)
+    //        ->select('id_noticia_like', 'user_id_like')
+    //         ->get();
+
+      
+    //     }
+
+    //     $countlikes = [];
+    //     $countlikes2 ='';
+
+    //     foreach ($noticias as $noticia){
+            
+    //          $countlikes2 .= ', '. LikeNoticia::whereIdNoticia($noticia->id_noticia)->count();
+    //     }
+        
+    //   $countlikes = explode(', ', $countlikes2);
+
+    //  unset($countlikes[current(array_keys($countlikes))]);
 
 
+       return $noticias;
+;
+
+   }
+
+   public function ApiGetLikesNoticia($id_noticia)
+   {
+
+//           $likes = LikeNoticia::where(function ($q) {
+//     $q->where('id_noticia', '=', $id_noticia);
+   
+// })->count();
+
+ //   $likes = LikeNoticia::whereIdNoticia($id_noticia)->get();
+    $countlikes = LikeNoticia::whereIdNoticia($id_noticia)->count();
+
+  //  $combined = $likes->combine($countlikes);
+
+        return [$id_noticia => $countlikes];
+
+   }
+
+   
+   public function GetLikes ()
+   {
+        $noticias = DB::table('noticias')->get();
+      $countlikes = [];
+        $countlikes2 ='';
+
+        foreach ($noticias as $noticia){
+            
+             $countlikes2 .= ', '. LikeNoticia::whereIdNoticia($noticia->id_noticia)->count();
+        }
+        
+      $countlikes = explode(', ', $countlikes2);
+
+     unset($countlikes[current(array_keys($countlikes))]);
+
+     return $countlikes;
    }
 
     /**

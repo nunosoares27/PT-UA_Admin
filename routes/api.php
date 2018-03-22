@@ -37,3 +37,6 @@ Route::post ('/loginApp', 'HomeController@authenticateNative');
 // http://ptua.desenvolvimento/api/likenoticia
 Route::post('/likenoticia', 'LikeNoticiaController@ApiStore');
 
+Route::get('/likespornoticia/{id_noticia}', 'NoticiaController@ApiGetLikesNoticia');
+
+Route::get('/likes','NoticiaController@GetLikes');
