@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\LikeNoticia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LikeNoticiaController extends Controller
 {
@@ -60,6 +61,21 @@ class LikeNoticiaController extends Controller
         ));
 
         $like->save();
+
+         $noticias = DB::table('noticias')->get();
+      $countlikes = [];
+        $countlikes2 ='';
+
+        foreach ($noticias as $noticia){
+            
+             $countlikes2 .= ', '. LikeNoticia::whereIdNoticia($noticia->id_noticia)->count();
+        }
+        
+      $countlikes = explode(', ', $countlikes2);
+
+     unset($countlikes[current(array_keys($countlikes))]);
+
+     return $countlikes;
        
     }
 
