@@ -40,3 +40,9 @@ Route::post('/likenoticia', 'LikeNoticiaController@ApiStore');
 Route::get('/likespornoticia/{id_noticia}', 'NoticiaController@ApiGetLikesNoticia');
 
 Route::get('/likes','NoticiaController@GetLikes');
+
+// comentar noticias
+
+Route::post('/comentarioNoticia','ComentarioNoticiaController@storeApi');
+
+Route::get('/comentarioNoticia','ComentarioNoticiaController@getComentarios');
