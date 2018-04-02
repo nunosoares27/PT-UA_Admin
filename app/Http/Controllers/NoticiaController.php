@@ -71,7 +71,7 @@ class NoticiaController extends Controller
 
 
        return $noticias;
-;
+
 
    }
 

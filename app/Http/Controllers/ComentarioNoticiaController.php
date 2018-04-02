@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ComentarioNoticia;
+use App\Noticia;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,10 +17,23 @@ class ComentarioNoticiaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function getComentarios()
+     public function getComentarios($id_noticia)
      {
-          $comentarios = DB::table('comentario_noticias')->join('users', 'users.id', '=', 'comentario_noticias.user_id')->get();
-          return $comentarios;
+         
+           $comentado= [];
+
+           $comentado = DB::table('comentario_noticias')
+          ->join('users', 'users.id', '=', 'comentario_noticias.user_id')
+          ->join('noticias', 'noticias.id_noticia', '=', 'comentario_noticias.id_noticia')
+          ->orderBy('id_noticia', 'ASC')
+          ->select('users.*', 'comentario_noticias.*')
+          ->where('noticias.id_noticia', '=', $id_noticia )
+          ->get();
+            
+         return response()->json(["Dados" => $comentado]);
+        
+     
+
      }
 
     public function index()

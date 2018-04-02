@@ -45,4 +45,4 @@ Route::get('/likes','NoticiaController@GetLikes');
 
 Route::post('/comentarioNoticia','ComentarioNoticiaController@storeApi');
 
-Route::get('/comentarioNoticia','ComentarioNoticiaController@getComentarios');
+Route::get('/comentarioNoticia/{id_noticia}','ComentarioNoticiaController@getComentarios');
