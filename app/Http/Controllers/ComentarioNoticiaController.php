@@ -30,7 +30,7 @@ class ComentarioNoticiaController extends Controller
           ->where('noticias.id_noticia', '=', $id_noticia )
           ->get();
             
-         return response()->json([$comentado]);
+         return response()->json($comentado);
         
      
 
