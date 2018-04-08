@@ -15,7 +15,7 @@ class NoticiaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['ApiGetNoticias','ApiGetLikesNoticia','GetLikes']]);
+        $this->middleware('auth',['except' => ['ApiGetNoticias','ApiGetLikesNoticia','GetLikes','storeApi']]);
     }
 
 
@@ -23,6 +23,7 @@ class NoticiaController extends Controller
    {
 
          $noticias = DB::table('noticias')
+         ->orderByRaw('id_noticia DESC')
          ->join('users', 'users.id', '=', 'noticias.user_id')
          ->select('id_noticia','name', 'email','typeUser','titulo','descricao','noticiaHasImagem1', 'noticiaHasImagem2')
          ->get();
@@ -132,6 +133,55 @@ class NoticiaController extends Controller
     public function create()
     {
          return view('noticiacreate');
+    }
+
+     public function storeApi(Request $request)
+    {
+         $noticia = new Noticia();
+         $titulo = $request->titulo;
+         $descricao = $request->descricao;
+         $noticiaHasImagem1 = false;
+         $noticiaHasImagem2 = false;    
+
+if ($request->hasFile('file1')){
+            
+             $noticiaHasImagem1 = true;
+        } 
+
+        if ($request->hasFile('file2')){
+             
+             $noticiaHasImagem2 = true;
+        } 
+
+        
+
+        $user_id = $request->user_id;
+
+        $data = [
+            'descricao' => $descricao,
+            'titulo' => $titulo,
+            'user_id' => $user_id,
+            'noticiaHasImagem1'=> $noticiaHasImagem1,
+             'noticiaHasImagem2'=> $noticiaHasImagem2
+]; 
+
+        $id = DB::table('noticias')->insertGetId(
+             $data
+         );
+
+       
+if ($request->hasFile('file1')){
+
+             $path = $request->file('file1')->storeAs('/public/noticias/', $id.'/imagem1.jpg');
+             
+        } 
+
+        if ($request->hasFile('file2')){
+             $path = $request->file('file2')->storeAs('/public/noticias/', $id.'/imagem2.jpg');
+            
+        } 
+
+    
     }
 
     /**

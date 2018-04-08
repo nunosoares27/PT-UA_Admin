@@ -46,3 +46,7 @@ Route::get('/likes','NoticiaController@GetLikes');
 Route::post('/comentarioNoticia','ComentarioNoticiaController@storeApi');
 
 Route::get('/comentarioNoticia/{id_noticia}','ComentarioNoticiaController@getComentarios');
+
+// criar noticias
+
+Route::post('/criarnoticia','NoticiaController@storeApi');
