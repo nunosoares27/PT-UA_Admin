@@ -14,7 +14,7 @@ class AddDescricaoToUsers extends Migration
     public function up()
     {
         Schema::table('users', function($table) {
-        $table->longText('descricao');
+        $table->longText('descricaoUser');
     });
     }
 
@@ -26,7 +26,7 @@ class AddDescricaoToUsers extends Migration
     public function down()
     {
         Schema::table('users', function($table) {
-        $table->dropColumn('descricao');
+        $table->dropColumn('descricaoUser');
     });
     }
 }
