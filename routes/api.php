@@ -50,3 +50,8 @@ Route::get('/comentarioNoticia/{id_noticia}','ComentarioNoticiaController@getCom
 // criar noticias
 
 Route::post('/criarnoticia','NoticiaController@storeApi');
+
+
+// editar perfil
+
+Route::post('/useredit/{id}', 'HomeController@updateUser');

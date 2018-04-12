@@ -24,8 +24,42 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['getUsers', 'registerUser','authenticateNative']]);
+        $this->middleware('auth', ['except' => ['getUsers', 'registerUser','authenticateNative','updateUser']]);
     }
+
+
+    public function updateUser(Request $request, $id)
+    {
+         $user = User::find($id);  
+         
+         $name = $request->name;
+         $descricaoUser = $request->descricaoUser;
+      //   $img = false;
+
+         if ($request->hasFile('file1')){
+            
+             $img = true;
+        } 
+         
+         $data = [
+             'descricaoUser' => $descricaoUser,
+            'name' => $name,
+             'img'=> $img
+         ];
+
+       
+         if ($request->hasFile('file1')){
+
+             $path = $request->file('file1')->storeAs('/public/users/', $id.'/imagem1.jpg');
+             
+        } 
+
+        
+         $user->update($data);
+
+         return $user;
+    }
+
 
     public function authenticateNative(Request $request)
     {
