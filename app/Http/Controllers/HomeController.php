@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
 use App\User;
-
+use App\Conversation;
 
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserConfirmEmail;
 use App\Mail\EmailWelcomePage;
+
+use App\Events\TestUpdate;
 
 class HomeController extends Controller
 {
@@ -24,9 +26,36 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['getUsers', 'registerUser','authenticateNative','updateUser']]);
+        $this->middleware('auth', ['except' => ['getUsers', 'registerUser','authenticateNative','updateUser', 'testBroadcast']]);
     }
 
+    public function testBroadcast($nome, $cargo)
+    {
+        TestUpdate::dispatch($nome, $cargo);
+        return 'com sucesso';
+    }
+
+    public function displayChat()
+    {
+        $dados = Conversation::all();
+        return view('chat', compact('dados'));
+    }
+
+    public function comentaChat(Request $request)
+    {
+        $utilizador_mensagem = $request->mensagem;
+        $utilizador_id = Auth::user()->id;
+        $utilizador_nome = Auth::user()->name;
+
+         Conversation::create([
+            'utilizador_nome' => $utilizador_nome,
+            'utilizador_id' => $utilizador_id,
+            'utilizador_mensagem' => $utilizador_mensagem,
+        ]);
+
+        TestUpdate::dispatch($utilizador_nome, $utilizador_id, $utilizador_mensagem);
+         return redirect('/chat');
+    } 
 
     public function updateUser(Request $request, $id)
     {

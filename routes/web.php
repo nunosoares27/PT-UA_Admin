@@ -49,3 +49,21 @@ Route::get('/criarnoticia','NoticiaController@create');
 Route::post('/criarnoticia','NoticiaController@store');
 
 Route::get('/feed-noticias','NoticiaController@index');
+
+// testar broacastevents
+
+// use App\Events\TestUpdate;
+
+// Route::get('/test/{nome}', function (){
+//     TestUpdate::dispatch($nome);
+//     return view('welcome');
+// });
+
+
+Route::get('/test/{nome}-{cargo}', 'HomeController@testBroadcast');
+
+
+Route::get('/chat','HomeController@displayChat');
+
+
+Route::post('/chat','HomeController@comentaChat');
