@@ -55,3 +55,10 @@ Route::post('/criarnoticia','NoticiaController@storeApi');
 // editar perfil
 
 Route::post('/useredit/{id}', 'HomeController@updateUser');
+
+// chat
+
+Route::get('/chat','HomeController@displayApiChat');
+
+
+Route::post('/chat','HomeController@comentaApiChat');

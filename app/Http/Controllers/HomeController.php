@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['getUsers', 'registerUser','authenticateNative','updateUser', 'testBroadcast']]);
+        $this->middleware('auth', ['except' => ['getUsers', 'registerUser','authenticateNative','updateUser', 'testBroadcast','displayApiChat','ComentaApiChat']]);
     }
 
     public function testBroadcast($nome, $cargo)
@@ -34,6 +34,28 @@ class HomeController extends Controller
         TestUpdate::dispatch($nome, $cargo);
         return 'com sucesso';
     }
+
+    public function displayApiChat()
+    {
+        $dados = Conversation::all();
+        return $dados;
+    }
+
+    public function comentaApiChat(Request $request)
+    {
+        $utilizador_mensagem = $request->mensagem;
+        // $utilizador_id = Auth::user()->id;
+        // $utilizador_nome = Auth::user()->name;
+
+        //  Conversation::create([
+        //     'utilizador_nome' => $utilizador_nome,
+        //     'utilizador_id' => $utilizador_id,
+        //     'utilizador_mensagem' => $utilizador_mensagem,
+        // ]);
+
+        // TestUpdate::dispatch($utilizador_nome, $utilizador_id, $utilizador_mensagem);
+        //  return redirect('/chat');
+    } 
 
     public function displayChat()
     {
