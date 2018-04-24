@@ -62,20 +62,20 @@ class LikeNoticiaController extends Controller
 
         $like->save();
 
-         $noticias = DB::table('noticias')->get();
-      $countlikes = [];
-        $countlikes2 ='';
+           $noticias = DB::table('noticias')->orderBy('id_noticia', 'DESC')->get();
+        
+       $countlikes = [];
+    //    $countlikes2 ='';
+     $countlikes2 =[];
 
         foreach ($noticias as $noticia){
             
-             $countlikes2 .= ', '. LikeNoticia::whereIdNoticia($noticia->id_noticia)->count();
+            //  $countlikes2[] =  [$noticia->id_noticia => LikeNoticia::whereIdNoticia($noticia->id_noticia)->count()];
+
+             $countlikes2[] =  [LikeNoticia::whereIdNoticia($noticia->id_noticia)->count()];
+           
         }
-        
-      $countlikes = explode(', ', $countlikes2);
-
-     unset($countlikes[current(array_keys($countlikes))]);
-
-     return $countlikes;
+        return $countlikes2;
        
     }
 
