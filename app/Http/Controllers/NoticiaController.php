@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Noticia;
 use App\LikeNoticia;
+use App\ComentarioNoticia;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,20 @@ class NoticiaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['ApiGetNoticias','ApiGetLikesNoticia','GetLikes','storeApi']]);
+        $this->middleware('auth',['except' => ['ApiGetNoticias','ApiGetLikesNoticia','GetLikes','storeApi','getApiComentarios']]);
+    }
+
+    public function getApiComentarios()
+    {
+        $comentarios = DB::table('comentario_noticias')->get();
+        $countcomentarios = [];
+
+        foreach ($comentarios as $comentario){
+              $countcomentarios[] =  [ComentarioNoticia::all()->where('user_id', '=', $comentario->user_id)->count()];
+    
+        }
+        
+        return $countcomentarios;
     }
 
 

@@ -62,3 +62,14 @@ Route::get('/chat','HomeController@displayApiChat');
 
 
 Route::post('/chat','HomeController@comentaApiChat');
+
+// obter numero comentarios por noticia
+
+Route::get('/comentarios', 'NoticiaController@getApiComentarios');
+
+// eventos
+
+Route::get('/eventos','EventoController@getEventos');
+
+Route::post('/eventos', 'EventoController@criaEvento');
+
