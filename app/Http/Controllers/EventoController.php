@@ -67,6 +67,12 @@ if ($request->hasFile('eventimg')){
         return $data;
     }
 
+    public function getEventosLaravel()
+    {
+         $eventos = Evento::orderBy('id_evento', 'desc')->get();
+         return view('eventos', compact('eventos'));
+    }
+
     public function index()
     {
         //

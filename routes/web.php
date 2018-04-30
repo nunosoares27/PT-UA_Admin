@@ -72,3 +72,5 @@ Route::post('/chat','HomeController@comentaChat');
 // new design
 
 Route::get('/home2','HomeController@index2');
+
+Route::get('/eventos', 'EventoController@getEventosLaravel');
