@@ -34,9 +34,10 @@ class HomeController extends Controller
        $noticias = DB::table('noticias')
          ->orderByRaw('id_noticia DESC')
          ->join('users', 'users.id', '=', 'noticias.user_id')
-         ->select('id_noticia','name', 'email','typeUser','titulo','descricao','noticiaHasImagem1', 'noticiaHasImagem2')
+         ->select('id_noticia','users.id','users.img','name', 'email','typeUser','titulo','descricao','noticiaHasImagem1', 'noticiaHasImagem2')
          ->get();
         return view('index2', compact('noticias'));
+     
     }
 
     public function testBroadcast($nome, $cargo)

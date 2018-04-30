@@ -105,11 +105,12 @@ nav {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: red;
+  background: #ecf0f1;
   overflow: hidden;
 }
 .profile-img img {
   width: 100%;
+  height: 100%;
 }
 
 .profile-info {
@@ -194,9 +195,15 @@ nav {
 
   <div class="card">
     <div class="card-header">
+   
       <div class="profile-img">
-        <img src="https://scontent.fopo1-1.fna.fbcdn.net/v/t1.0-1/p40x40/30706465_874083729468809_8715597921967407104_n.jpg?_nc_cat=0&oh=9f6650331f1b3a7e2e521d3848e04c25&oe=5B97BDCC" alt="">
+       @if ($noticia->img == 1)
+        <img src="http://ptua.desenvolvimento/storage/users/{{$noticia->id}}/imagem1.jpg" alt="">
+        @else
+          <img src="http://ptua.desenvolvimento/img/user1.png" alt="">
+         @endif
       </div>
+     
       <div class="profile-info">
         <div class="author">{{$noticia->name}}</div>
         <div class="cargo">{{$noticia->typeUser}}</div>
