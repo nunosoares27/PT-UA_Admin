@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Conversation;
-
+use App\Noticia;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserConfirmEmail;
@@ -27,6 +27,16 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['getUsers', 'registerUser','authenticateNative','updateUser', 'testBroadcast','displayApiChat','comentaApiChat']]);
+    }
+
+    public function index2 ()
+    {
+       $noticias = DB::table('noticias')
+         ->orderByRaw('id_noticia DESC')
+         ->join('users', 'users.id', '=', 'noticias.user_id')
+         ->select('id_noticia','name', 'email','typeUser','titulo','descricao','noticiaHasImagem1', 'noticiaHasImagem2')
+         ->get();
+        return view('index2', compact('noticias'));
     }
 
     public function testBroadcast($nome, $cargo)

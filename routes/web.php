@@ -67,3 +67,8 @@ Route::get('/chat','HomeController@displayChat');
 
 
 Route::post('/chat','HomeController@comentaChat');
+
+
+// new design
+
+Route::get('/home2','HomeController@index2');
