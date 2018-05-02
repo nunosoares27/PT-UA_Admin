@@ -63,9 +63,6 @@ Route::get('/feed-noticias','NoticiaController@index');
 Route::get('/test/{nome}-{cargo}', 'HomeController@testBroadcast');
 
 
-Route::get('/chat','HomeController@displayChat');
-
-
 Route::post('/chat','HomeController@comentaChat');
 
 
@@ -74,3 +71,7 @@ Route::post('/chat','HomeController@comentaChat');
 Route::get('/home2','HomeController@index2');
 
 Route::get('/eventos', 'EventoController@getEventosLaravel');
+
+Route::get('/chat','HomeController@displayChat');
+
+Route:: get('/perfil','HomeController@displayProfile');

@@ -52,6 +52,14 @@ class HomeController extends Controller
         return $dados;
     }
 
+    public function displayProfile()
+    {
+        $auth_id = Auth::user()->id;    
+        $dados = User::find($auth_id);
+        return view('perfil', compact('dados'));
+       
+    }
+
     public function comentaApiChat(Request $request)
     {
         $utilizador_mensagem = $request->utilizador_mensagem;
