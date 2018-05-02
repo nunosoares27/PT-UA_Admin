@@ -184,16 +184,103 @@ b, span {
     margin-left: 25px;
 }
 
-button {
+.editButao {
     width: 72px;
-    height: 35px;
+    height: 26px;
     margin-bottom: 16px;
-    padding: 0;
+    padding-top: 12px;
     background-color: #27ae60;
     color: white;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
 
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 35vw;
+  position: relative;
+  /*transition: all 5s ease-in-out;*/
+}
+.popup .close {
+  position: absolute;
+  top: -9px;
+  right: -2px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+input[type="text"] {
+    height: 20px;
+    width: 31vw;
+    padding-left: 6px;
+    margin-left: 16px;
+    margin-top: 15px;
+}
+
+label {
+    font-size: 11pt;
+    margin-right: 20px;
+}
+
+
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 13pt;
+    height: 21px;
+    font-weight: 500;
+    color: white;
+    background-color: #131418;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 31vw;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.editButao2 {
+    width: 72px;
+    height: 20px;
+    margin-top: 15px;
+    margin-bottom: 16px;
+    padding-top: 7px;
+    background-color: #27ae60;
+    color: white;
+}
+}
 
 </style>
 </head>
@@ -228,12 +315,26 @@ button {
                     <p>Descrição:<b>{{$dados->descricaoUser}}</b></p>
                     <p>E-mail:<b>{{$dados->email}}</b></p>
                     <p>Tipo de Utilizador:<b>{{$dados->typeUser}}</b></p>
-                       <button class="">Editar</button>
+                       <a class="editButao" href="#popup_edit">Editar</a>
                  </div>
 
             </div>
             </div>
      
+            <div id="popup_edit" class="overlay">
+              <div class="popup">
+              <a class="close" href="#">&times;</a>
+                
+                <input type="text" placeholder="" value="{{$dados->name}}" />
+                
+                <input  type="text" placeholder="" value="{{$dados->descricaoUser}}" />
+                
+                <input  type="text" placeholder="" value="{{$dados->email}}" />
+                <input type="file" name="file" id="file" class="inputfile" />
+<label for="file">Imagem</label>
+                <a class="editButao2">Enviar</a>
+              </div>
+            </div>
        
   
 
