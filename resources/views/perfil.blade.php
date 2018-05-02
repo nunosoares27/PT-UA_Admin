@@ -280,7 +280,13 @@ label {
     background-color: #27ae60;
     color: white;
 }
+
+i.fa.fa-upload {
+    color: white;
+    font-size: 13pt;
+    padding-right: 10px;
 }
+
 
 </style>
 </head>
@@ -331,7 +337,7 @@ label {
                 
                 <input  type="text" placeholder="" value="{{$dados->email}}" />
                 <input type="file" name="file" id="file" class="inputfile" />
-<label for="file">Imagem</label>
+<label for="file"><i class="fa fa-upload" aria-hidden="true"></i>Imagem</label>
                 <a class="editButao2">Enviar</a>
               </div>
             </div>
