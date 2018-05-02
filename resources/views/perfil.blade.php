@@ -287,21 +287,39 @@ i.fa.fa-upload {
     padding-right: 10px;
 }
 
+.btnsair{
+  
+    width: 72px;
+    height: 31px;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-size: 13pt;
+
+}
+
 
 </style>
 </head>
 <body>
    <header>
-    <a href=""><i class="fa fa-home" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-calendar-alt" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-comment" aria-hidden="true"></i></a>
-     <a href=""><i class="fa fa-user active" aria-hidden="true"></i></a>
+    <a href="/home2"><i class="fa fa-home" aria-hidden="true"></i></a>
+    <a href="/eventos"><i class="fa fa-calendar-alt" aria-hidden="true"></i></a>
+    <a href="/chat"><i class="fa fa-comment" aria-hidden="true"></i></a>
+     <a href="/perfil"><i class="fa fa-user active" aria-hidden="true"></i></a>
   </header>
   
   <nav>
       <div id="logoUA"> <img src="/img/logo.png"/> </div> 
       <div id="welcomeUserTop"><a id="cuidado">{{ Auth::user()->name }}</a></div>
-      <div id="sair"><a href="">sair</a></div>
+     <div id="sair">
+       <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                            {{ csrf_field() }}
+      <button class="btnsair">sair</button>
+      </form>
+      </div>
   </nav>
   
    

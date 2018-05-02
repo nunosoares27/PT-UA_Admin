@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+ // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/emailconfirm/{email}', 'HomeController@confirmaEmailUtilizador');
 
@@ -68,7 +68,7 @@ Route::post('/chat','HomeController@comentaChat');
 
 // new design
 
-Route::get('/home2','HomeController@index2');
+Route::get('/home','HomeController@index2');
 
 Route::get('/eventos', 'EventoController@getEventosLaravel');
 
