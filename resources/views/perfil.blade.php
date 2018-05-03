@@ -273,6 +273,7 @@ label {
     height: 28px;
     margin-top: 15px;
     margin-bottom: 16px;
+    margin-left: 16px;
     padding-top: 0px;
     background-color: #27ae60;
     color: white;
@@ -309,7 +310,7 @@ i.fa.fa-upload {
 </head>
 <body>
    <header>
-    <a href="/home2"><i class="fa fa-home" aria-hidden="true"></i></a>
+    <a href="/home"><i class="fa fa-home" aria-hidden="true"></i></a>
     <a href="/eventos"><i class="fa fa-calendar-alt" aria-hidden="true"></i></a>
     <a href="/chat"><i class="fa fa-comment" aria-hidden="true"></i></a>
      <a href="/perfil"><i class="fa fa-user active" aria-hidden="true"></i></a>
