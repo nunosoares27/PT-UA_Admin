@@ -188,6 +188,76 @@ nav {
 
 }
 
+.card-header2 {
+    color: white;
+    width: 645px;
+    background: #131418;
+    height: 24px;
+    padding-top: 5px;
+    padding-left: 5px;
+    border-bottom: 1px solid #131418;
+}
+
+
+input[type="text"] {
+    height: 20px;
+    width: 31vw;
+    padding-left: 6px;
+    margin-left: 115px;
+    margin-top: 15px;
+}
+
+label {
+    font-size: 11pt;
+    margin-right: 20px;
+}
+
+
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 13pt;
+    height: 21px;
+    font-weight: 500;
+    color: white;
+    background-color: #131418;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    margin-top: 15px;
+    margin-left: 115px;
+    width: 31vw;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.editButao2 {
+    width: 72px;
+    height: 28px;
+    margin-top: 15px;
+    margin-bottom: 16px;
+    margin-left: 115px;
+    padding-top: 0px;
+    background-color: #27ae60;
+    color: white;
+}
+
+i.fa.fa-upload {
+    color: white;
+    font-size: 13pt;
+    padding-right: 10px;
+}
+
 </style>
 </head>
 <body>
@@ -209,6 +279,26 @@ nav {
       </div>
   </nav>
   
+   <div class="card">
+   <div class="card-header2">
+   <div class="profile-info">
+      Criar Notícia
+      </div>
+   </div>
+    <div class="card-body">
+     <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="">
+                        {{ csrf_field() }}
+         <input type="text" name="titulo" placeholder="Titulo..." value="" />
+                
+                <input  type="text" name="descricao" placeholder="Descrição..." value="" />
+                
+                <input type="file" name="file1" id="file1" class="inputfile" />
+<label for="file1"><i class="fa fa-upload" aria-hidden="true"></i>Imagem</label>
+                <button type="submit" class="editButao2">Enviar</button>
+     </form>
+    </div>
+    </div>
+
   @foreach ($noticias as $noticia)
 
   <div class="card">
