@@ -255,6 +255,12 @@ input#password {
     margin-bottom: 25px;
 }
 
+#sair {
+    padding: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
 
 
 
@@ -264,12 +270,11 @@ input#password {
   
   <nav>
       <div id="logoUA"> <img src="/img/logo.png"/> </div> 
-      <div id="welcomeUserTop"><a id="cuidado">Entrar</a></div>
+      <div id="welcomeUserTop"><a id="cuidado" href="/login">Entrar</a></div>
       <div id="sair">
-       <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                                            {{ csrf_field() }}
-      <button class="btnsair">Registar</button>
-      </form>
+       
+      <a class="btnsair" href="register" >Registar</a>
+    
       </div>
   </nav>
   
