@@ -106,6 +106,7 @@ class HomeController extends Controller
          $descricaoUser = $request->descricaoUser;
       //   $img = false;
 
+
          if ($request->hasFile('file1')){
             
              $img = true;
@@ -129,6 +130,47 @@ class HomeController extends Controller
 
          return $user;
     }
+
+
+ public function updateUser2(Request $request, $id)
+    {
+         $user = User::find($id);  
+         
+         $name = $request->name;
+         $descricaoUser = $request->descricaoUser;
+     //    $img = false;
+
+
+         if ($request->hasFile('file1')){
+            
+             $img = true;
+              $data = [
+             'descricaoUser' => $descricaoUser,
+            'name' => $name,
+             'img'=> $img
+         ];
+        } else {
+         
+         $data = [
+             'descricaoUser' => $descricaoUser,
+            'name' => $name,
+         ];
+        }
+       
+         if ($request->hasFile('file1')){
+
+             $path = $request->file('file1')->storeAs('/public/users/', $id.'/imagem1.jpg');
+             
+        } 
+
+         
+         $user->update($data);
+
+       $dados = User::find($id);
+
+        return view('perfil', compact('dados'));
+    }
+
 
 
     public function authenticateNative(Request $request)

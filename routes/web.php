@@ -75,3 +75,7 @@ Route::get('/eventos', 'EventoController@getEventosLaravel');
 Route::get('/chat','HomeController@displayChat');
 
 Route:: get('/perfil','HomeController@displayProfile');
+
+// editar perfil
+
+Route::post('/useredit/{id}', 'HomeController@updateUser2');

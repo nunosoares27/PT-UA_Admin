@@ -135,8 +135,8 @@ nav {
   border-bottom: 1px solid #131418;
 }
 .card-body img {
-  height: 400px;
-  width: 100%;
+    height: 250px;
+    width: 43%;
 }
 
 .news-desc {
@@ -180,9 +180,6 @@ b, span {
     padding-left: 5px;
 }
 
-#dadosUser {
-    margin-left: 25px;
-}
 
 .editButao {
     width: 72px;
@@ -273,10 +270,10 @@ label {
 
 .editButao2 {
     width: 72px;
-    height: 20px;
+    height: 28px;
     margin-top: 15px;
     margin-bottom: 16px;
-    padding-top: 7px;
+    padding-top: 0px;
     background-color: #27ae60;
     color: white;
 }
@@ -298,6 +295,13 @@ i.fa.fa-upload {
     border: none;
     font-size: 13pt;
 
+}
+
+#dadosUser {
+    float: right;
+    margin-right: 36px;
+    margin-top: 21px;
+    width: 46%;
 }
 
 
@@ -348,15 +352,18 @@ i.fa.fa-upload {
             <div id="popup_edit" class="overlay">
               <div class="popup">
               <a class="close" href="#">&times;</a>
+                 <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/useredit/{{$dados->id}}">
+                        {{ csrf_field() }}
+
+                <input type="text" name="name" placeholder="" value="{{$dados->name}}" />
                 
-                <input type="text" placeholder="" value="{{$dados->name}}" />
+                <input  type="text" name="descricaoUser" placeholder="" value="{{$dados->descricaoUser}}" />
                 
-                <input  type="text" placeholder="" value="{{$dados->descricaoUser}}" />
-                
-                <input  type="text" placeholder="" value="{{$dados->email}}" />
-                <input type="file" name="file" id="file" class="inputfile" />
-<label for="file"><i class="fa fa-upload" aria-hidden="true"></i>Imagem</label>
-                <a class="editButao2">Enviar</a>
+                <input  type="text" name="email" placeholder="" value="{{$dados->email}}" />
+                <input type="file" name="file1" id="file1" class="inputfile" />
+<label for="file1"><i class="fa fa-upload" aria-hidden="true"></i>Imagem</label>
+                <button type="submit" class="editButao2">Enviar</button>
+                </form>
               </div>
             </div>
        
