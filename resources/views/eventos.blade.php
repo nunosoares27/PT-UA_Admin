@@ -14,6 +14,8 @@
      <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
+
     <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
@@ -208,6 +210,14 @@ input[type="text"] {
     margin-top: 15px;
 }
 
+input[type="date"] {
+    height: 20px;
+    width: 31vw;
+    padding-left: 6px;
+    margin-left: 115px;
+    margin-top: 15px;
+}
+
 label {
     font-size: 11pt;
     margin-right: 20px;
@@ -294,8 +304,8 @@ i.fa.fa-upload {
          <input type="text" name="titulo" placeholder="Titulo..." value="" />
                 
                 <input  type="text" name="descricao" placeholder="Descrição..." value="" />
-                 <input  type="text" name="data" placeholder="Data..." value="" />
-
+                 <!--<input  type="date" name="data"  placeholder="Data..." value="" />-->
+                <input  type="date" name="data" class="timepicker" placeholder="Data..." value="" />
                   <input  type="text" name="local" placeholder="Local..." value="" />
                 
                 <input type="file" name="eventimg" id="eventimg" class="inputfile" />
@@ -323,10 +333,26 @@ i.fa.fa-upload {
        
              @endforeach
      
-       
-  
+   <!--<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+ 
 
+   <script src="{{ asset('js/picker.js') }}"></script>
     
+   <script src="{{ asset('js/picker.date.js') }}"></script>
+   <script src="{{ asset('js/picker.time.js') }}"></script>
+   <script src="{{ asset('js/legacy.js') }}"></script>
+
+    <script>
+    var picker = $('.pickadate').pickadate('picker');
+ $( ".timepicker" ).click(function() {
+  
+   picker.close();
+    });
+   
+    </script>-->
 </body>
 </html>
 
