@@ -226,10 +226,10 @@ if ($request->hasFile('file1')){
              $noticiaHasImagem1 = true;
         } 
 
-        if ($request->hasFile('file2')){
+        // if ($request->hasFile('file2')){
              
-             $noticiaHasImagem2 = true;
-        } 
+        //      $noticiaHasImagem2 = true;
+        // } 
 
         
 
@@ -253,12 +253,12 @@ if ($request->hasFile('file1')){
              
         } 
 
-        if ($request->hasFile('file2')){
-             $path = $request->file('file2')->storeAs('/public/noticias/', $id.'/imagem2.jpg');
+        // if ($request->hasFile('file2')){
+        //      $path = $request->file('file2')->storeAs('/public/noticias/', $id.'/imagem2.jpg');
             
-        } 
+        // } 
 
-        return redirect('/feed-noticias');
+        return redirect('/home');
     }
 
     /**

@@ -79,3 +79,7 @@ Route:: get('/perfil','HomeController@displayProfile');
 // editar perfil
 
 Route::post('/useredit/{id}', 'HomeController@updateUser2');
+
+// criar noticia
+
+Route::post('/criarnoticia','NoticiaController@store');

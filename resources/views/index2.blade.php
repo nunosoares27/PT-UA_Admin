@@ -286,7 +286,7 @@ i.fa.fa-upload {
       </div>
    </div>
     <div class="card-body">
-     <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="">
+     <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="http://ptua.desenvolvimento/criarnoticia">
                         {{ csrf_field() }}
          <input type="text" name="titulo" placeholder="Titulo..." value="" />
                 
