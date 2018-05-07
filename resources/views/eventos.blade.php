@@ -161,7 +161,6 @@ nav {
 .card:last-child {
   /* margin-bottom: 25% !important; */
 }
-
 #welcomeUserTop {
     position: absolute;
     top: 0;
@@ -177,10 +176,6 @@ nav {
   color: white;
 }
 
-b, span {
-    padding-left: 25px;
-}
-
 .btnsair{
   
     width: 72px;
@@ -192,6 +187,76 @@ b, span {
     border: none;
     font-size: 13pt;
 
+}
+
+.card-header2 {
+    color: white;
+    width: 645px;
+    background: #131418;
+    height: 24px;
+    padding-top: 5px;
+    padding-left: 5px;
+    border-bottom: 1px solid #131418;
+}
+
+
+input[type="text"] {
+    height: 20px;
+    width: 31vw;
+    padding-left: 6px;
+    margin-left: 115px;
+    margin-top: 15px;
+}
+
+label {
+    font-size: 11pt;
+    margin-right: 20px;
+}
+
+
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 13pt;
+    height: 21px;
+    font-weight: 500;
+    color: white;
+    background-color: #131418;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    margin-top: 15px;
+    margin-left: 115px;
+    width: 31vw;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.editButao2 {
+    width: 72px;
+    height: 28px;
+    margin-top: 15px;
+    margin-bottom: 16px;
+    margin-left: 115px;
+    padding-top: 0px;
+    background-color: #27ae60;
+    color: white;
+}
+
+i.fa.fa-upload {
+    color: white;
+    font-size: 13pt;
+    padding-right: 10px;
 }
 
 
@@ -217,7 +282,28 @@ b, span {
       </div>
   </nav>
   
-   
+    <div class="card">
+   <div class="card-header2">
+   <div class="profile-info">
+      Criar Evento
+      </div>
+   </div>
+    <div class="card-body">
+     <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="http://ptua.desenvolvimento/eventos">
+                        {{ csrf_field() }}
+         <input type="text" name="titulo" placeholder="Titulo..." value="" />
+                
+                <input  type="text" name="descricao" placeholder="Descrição..." value="" />
+                 <input  type="text" name="data" placeholder="Data..." value="" />
+
+                  <input  type="text" name="local" placeholder="Local..." value="" />
+                
+                <input type="file" name="eventimg" id="eventimg" class="inputfile" />
+<label for="eventimg"><i class="fa fa-upload" aria-hidden="true"></i>Imagem</label>
+                <button type="submit" class="editButao2">Enviar</button>
+     </form>
+    </div>
+    </div>
       
             
                 @foreach ($eventos as $evento)

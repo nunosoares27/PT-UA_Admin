@@ -48,7 +48,7 @@ Route::get('/criarnoticia','NoticiaController@create');
 
 Route::post('/criarnoticia','NoticiaController@store');
 
-Route::get('/feed-noticias','NoticiaController@index');
+// Route::get('/feed-noticias','NoticiaController@index');
 
 // testar broacastevents
 
@@ -80,6 +80,7 @@ Route:: get('/perfil','HomeController@displayProfile');
 
 Route::post('/useredit/{id}', 'HomeController@updateUser2');
 
-// criar noticia
+// criar evento
 
-Route::post('/criarnoticia','NoticiaController@store');
+Route::post('/eventos', 'EventoController@criaEventoWeb');
+

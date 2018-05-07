@@ -61,6 +61,50 @@ if ($request->hasFile('eventimg')){
 
     }
 
+
+public function criaEventoWeb (Request $request)
+    {
+        
+        $evento = new Evento();
+         $titulo = $request->titulo;
+         $descricao = $request->descricao;
+         $data = $request->data;
+         $local = $request->local;
+         $eventoHasImagem1 = false;
+          
+
+if ($request->hasFile('eventimg')){
+            
+             $eventoHasImagem1 = true;
+        } 
+
+        $data2 = [
+            'descricao' => $descricao,
+            'titulo' => $titulo,
+            'data' => $data,
+            'local' => $local,
+            'eventoHasImagem1'=> $eventoHasImagem1,
+           
+]; 
+
+        $id = DB::table('eventos')->insertGetId(
+             $data2
+         );
+
+       
+if ($request->hasFile('eventimg')){
+
+             $path = $request->file('eventimg')->storeAs('/public/eventos/', $id.'/imagem1.jpg');
+             
+        } 
+
+      
+        return view('/eventos');
+
+    }
+
+
+
     public function getEventos()
     {
         $data = Evento::orderBy('id_evento', 'desc')->get();
