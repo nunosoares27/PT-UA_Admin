@@ -269,6 +269,9 @@ i.fa.fa-upload {
     padding-right: 10px;
 }
 
+p {
+    margin-left: 15px;
+}
 
 
 </style>
